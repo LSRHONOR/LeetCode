@@ -1,0 +1,46 @@
+> Problem: [523. 连续的子数组和](https://leetcode.cn/problems/continuous-subarray-sum/description/)
+
+[TOC]
+
+# 思路
+
+> 用hashTable+前缀和
+
+# 解题方法
+
+> 题目要求subarray至少是2 所以从2开始遍历
+> 但是hashTable存储的是[0,len -2)的前缀和 % k
+
+# 复杂度
+
+时间复杂度:
+
+> $O(n)$ 枚举了一遍数组
+
+空间复杂度:
+
+> $O(n)$ 额外空间来自preSum和hashTable
+
+# Code
+
+* []
+
+```C++
+class Solution {
+public:
+    bool checkSubarraySum(vector<int>& nums, int k) {
+        int len = nums.size();
+        vector<int> preSum(len + 1,0);
+        unordered_set<int> hash;
+        for (int i = 1;i <= len;i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
+        for (int j = 2;j <= len;j++) {  //从2开始 表示区间[0,1] 因为题目要求子数组长度至少为2
+            hash.insert(preSum[j - 2] % k);
+            if (hash.find(preSum[j] % k) != hash.end()) return true;
+        }
+        return false;
+    }
+};
+```
+
