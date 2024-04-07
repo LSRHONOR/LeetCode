@@ -1,7 +1,5 @@
 package leetcode.editor.cn;
 
-import javax.swing.tree.TreeNode;
-
 /**
   * 题目Id：226; 
   * 题目：翻转二叉树，invert-binary-tree; 
@@ -12,6 +10,25 @@ class 翻转二叉树 {
     public static void main(String[] args) {
         Solution solution = new 翻转二叉树().new Solution();
         
+    }
+
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
     }
 
 //leetcode submit region begin(Prohibit modification and deletion)
